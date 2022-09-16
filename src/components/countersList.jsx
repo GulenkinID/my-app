@@ -22,17 +22,20 @@ const CountersList = () => {
     console.log("handleReset");
   };
 
-  const handleIncrement = () => {
-    const newState = initialState.map((item) =>  item.value + 1);
+  const handleIncrement = (id) => {
+    const newState = counters.map((item) => ({
+      ...item,
+      value: item.id === id ? item.value + 1 : item.value + 0,
+    }));
     setCounters(newState);
-    console.log("handleIncrement");
-    // console.log("newState+", newState);
   };
 
-  const handleDecrement = () => {
-    // initialState.map((item) => item.value - 1);
-    console.log("handleDecrement");
-    // console.log("initialState-", initialState);
+  const handleDecrement = (id) => {
+    const newState = counters.map((item) => ({
+      ...item,
+      value: item.id === id ? item.value - 1 : item.value + 0,
+    }));
+    setCounters(newState);
   };
 
   return (
